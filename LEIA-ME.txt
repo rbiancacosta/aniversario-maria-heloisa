@@ -1,1 +1,14 @@
-Envie TODOS os arquivos desta pasta para a raiz do repositório no GitHub. Depois aguarde alguns minutos e pressione Ctrl+F5.
+JARDIM DOS MORANGOS — V4 CORRIGIDA
+
+1. Extraia este ZIP.
+2. Envie TODOS os arquivos para a raiz do repositório no GitHub.
+3. Confirme o upload e aguarde o GitHub Pages publicar.
+4. No Google Forms, coloque na mensagem final este endereço:
+
+https://rbiancacosta.github.io/aniversario-maria-heloisa/?confirmado=sim
+
+IMPORTANTE:
+- O endereço normal sem ?confirmado=sim não abre o conteúdo do site.
+- Os vídeos estão compactados e completos.
+- Não altere os nomes dos arquivos.
+- Depois de publicar, pressione Ctrl + F5 no computador.

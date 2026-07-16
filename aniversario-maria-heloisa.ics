@@ -1,9 +1,12 @@
 BEGIN:VCALENDAR
 VERSION:2.0
+PRODID:-//Maria Heloisa//Aniversario//PT-BR
 BEGIN:VEVENT
+UID:maria-heloisa-20270515@example.com
 DTSTART:20270515T160000Z
 DTEND:20270515T200000Z
 SUMMARY:1º aniversário da Maria Heloísa
+DESCRIPTION:Jardim dos Morangos da Maria Heloísa
 LOCATION:https://maps.app.goo.gl/Jm96BGBUCrWQhPKY7
 END:VEVENT
 END:VCALENDAR
