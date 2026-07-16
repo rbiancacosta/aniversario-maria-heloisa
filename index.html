@@ -114,15 +114,15 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 1</div><h2>Descobrindo Você</h2><div class="divider"></div>
 <p class="story">Foi quando soubemos que você existia que nossas vidas começaram a mudar. Um pequeno coração já fazia nascer em nós um amor imenso.</p>
 <div class="gallery">
-<div class="photo"><img src="ultrassom_1.jpg?v=5.1" alt="Primeiro registro"></div>
-<div class="photo"><img src="ultrassom_2.jpg?v=5.1" alt="Maria Heloísa ainda na barriga"></div>
+<div class="photo"><img src="descobrindo_voce_01_v52.jpg" alt="Primeiro registro"></div>
+<div class="photo"><img src="descobrindo_voce_02_v52.jpg" alt="Maria Heloísa ainda na barriga"></div>
 </div>
 </section>
 
 <section class="card reveal" id="revelacao">
 <div class="chapter">Capítulo 2</div><h2>Descobrindo que era você</h2><div class="divider"></div>
 <p class="story">Entre expectativa, abraços e muita emoção, descobrimos que o nosso jardim ganharia uma linda flor: Maria Heloísa.</p>
-<div class="video-wrap"><video class="auto" src="video_revelacao.mp4?v=5.1" muted playsinline controls preload="metadata"></video><button class="sound">🔊 Ativar som</button></div>
+<div class="video-wrap"><video class="site-video" src="revelacao_v52.mp4" muted playsinline controls preload="metadata"></video><div style="text-align:center;padding:8px;background:#fff;color:#6f7b39;font-weight:700">Toque no botão ▶ para assistir</div><button class="sound">🔊 Ativar som</button></div>
 <div class="divider"></div>
 <div class="gallery three">
 <div class="photo"><img src="revelacao_1.jpg?v=5.1"></div><div class="photo"><img src="revelacao_2.jpg?v=5.1"></div>
@@ -153,7 +153,7 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <section class="card reveal" id="bencaos">
 <div class="chapter">Capítulo 5</div><h2>Chá de Bênçãos</h2><div class="divider"></div>
 <p class="story">Na despedida da barriga, reunimos amor, fé e palavras de bênção para acompanhar os últimos passos até o nosso encontro.</p>
-<div class="video-wrap"><video class="auto" src="video_cha_bencaos.mp4?v=5.1" muted playsinline controls preload="metadata"></video><button class="sound">🔊 Ativar som</button></div>
+<div class="video-wrap"><video class="site-video" src="cha_bencaos_v52.mp4" muted playsinline controls preload="metadata"></video><div style="text-align:center;padding:8px;background:#fff;color:#6f7b39;font-weight:700">Toque no botão ▶ para assistir</div><button class="sound">🔊 Ativar som</button></div>
 </section>
 
 <section class="card reveal" id="nascimento">
@@ -230,9 +230,11 @@ menu.onclick=()=>links.classList.toggle('open');links.querySelectorAll('a').forE
 const target=new Date('2027-05-15T13:00:00-03:00').getTime();
 function tick(){const x=target-Date.now();if(x<=0)return;days.textContent=Math.floor(x/86400000);hours.textContent=Math.floor(x%86400000/3600000);minutes.textContent=Math.floor(x%3600000/60000);seconds.textContent=Math.floor(x%60000/1000)}
 tick();setInterval(tick,1000);
-document.querySelectorAll('.sound').forEach(btn=>btn.onclick=()=>{const v=btn.previousElementSibling;v.muted=!v.muted;btn.textContent=v.muted?'🔊 Ativar som':'🔇 Silenciar'});
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('auto'))e.target.play().catch(()=>{})}else if(e.target.classList.contains('auto'))e.target.pause()}),{threshold:.35});
-document.querySelectorAll('.reveal,.auto').forEach(el=>obs.observe(el));
+document.querySelectorAll('.sound').forEach(btn=>btn.onclick=()=>{const v=btn.parentElement.querySelector('video');v.muted=!v.muted;v.play().catch(()=>{});btn.textContent=v.muted?'🔊 Ativar som':'🔇 Silenciar'});
+const revealObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})
+},{threshold:.18});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 document.getElementById('share').onclick=async()=>{const data={title:'Maria Heloísa',url:location.href};if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);alert('Link copiado!')}};
 </script>
 </body>
