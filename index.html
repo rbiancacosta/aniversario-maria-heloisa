@@ -6,146 +6,214 @@
 <meta name="theme-color" content="#f3c9d0">
 <meta name="description" content="Site oficial do 1º aniversário da Maria Heloísa — Jardim dos Morangos.">
 <title>Jardim dos Morangos • Maria Heloísa</title>
-<link rel="icon" href="assets/brasao.png">
-<style>
-:root{
- --rosa:#d96672;--rosa2:#be4f5c;--rosa3:#f2b4be;--verde:#73803b;--verde2:#59652b;
- --creme:#fffdf8;--texto:#5b443b;--borda:#efc5ca;--sombra:0 20px 55px rgba(92,66,58,.16)
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;color:var(--texto);font-family:Arial,Helvetica,sans-serif;background-color:#fff8f8;
-background-image:linear-gradient(rgba(238,144,156,.18) 50%,transparent 50%),linear-gradient(90deg,rgba(238,144,156,.18) 50%,transparent 50%);
-background-size:42px 42px;overflow-x:hidden}
-body.no-scroll{overflow:hidden} a{color:inherit} img{max-width:100%}
-.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:linear-gradient(180deg,#fff7f8,#f8dce1);transition:.7s}
-.intro.hidden{opacity:0;visibility:hidden}.intro-card{width:min(100%,620px);text-align:center;background:#ffffffeb;border:1px solid var(--borda);border-radius:34px;padding:28px 20px;box-shadow:var(--sombra)}
-.intro-card img{width:min(76vw,300px);animation:float 3.2s ease-in-out infinite}.small{color:var(--verde);text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:700}
-.intro h1,.hero h1,.title{color:var(--rosa);font-family:Georgia,serif;font-style:italic;font-weight:500}
-.intro h1{font-size:clamp(36px,9vw,61px);margin:8px 0}.intro p{font:18px/1.55 Georgia,serif}
-.enter{border:0;border-radius:999px;padding:16px 25px;color:#fff;font-weight:700;background:linear-gradient(#e7838d,#c95d68);box-shadow:0 10px 24px #c95d6840;cursor:pointer}
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:12px}.hero-card,.section{background:#fffffff2;border:1px solid var(--borda);box-shadow:var(--sombra)}
-.hero-card{width:min(100%,820px);border-radius:34px;overflow:hidden;text-align:center}.gingham{height:31px;background-color:#fff2f4;background-image:linear-gradient(rgba(238,144,156,.28) 50%,transparent 50%),linear-gradient(90deg,rgba(238,144,156,.28) 50%,transparent 50%);background-size:25px 25px}
-.hero-content{padding:28px 18px 32px}.hero-content>img{width:min(80vw,340px)}.hero h1{font-size:clamp(42px,9vw,69px);margin:4px 0 10px}.hero p{max-width:600px;margin:auto;font:19px/1.58 Georgia,serif}.hero p strong{display:block;color:var(--rosa);font-size:25px;font-style:italic}
-.scroll{display:inline-block;margin-top:22px;color:var(--verde);font-weight:700;text-decoration:none}
-.site{width:min(100% - 14px,820px);margin:0 auto 30px}.section{border-radius:30px;padding:29px 22px;margin:18px 0;overflow:hidden}.title{text-align:center;font-size:clamp(32px,7vw,50px);margin:0}
-.subtitle{text-align:center;max-width:640px;margin:10px auto 0;font:18px/1.55 Georgia,serif}.divider{width:220px;height:1px;margin:20px auto 24px;background:linear-gradient(90deg,transparent,var(--verde),transparent)}
-.chapter-label{text-align:center;color:var(--verde);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;margin-bottom:7px}
-.story{font:19px/1.65 Georgia,serif;text-align:center;max-width:660px;margin:0 auto 22px}.story strong{color:var(--rosa);font-style:italic;font-weight:500}
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.gallery.three{grid-template-columns:repeat(3,1fr)}
-.photo{border-radius:20px;overflow:hidden;border:1px solid var(--borda);background:#fff;box-shadow:0 9px 22px #5b443b18;cursor:pointer}
-.photo img{display:block;width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;transition:.25s}.photo.wide{grid-column:1/-1}.photo.wide img{aspect-ratio:16/9}.photo:hover img{transform:scale(1.025)}
-.timeline{display:grid;gap:18px}.month{border:1.5px dashed #ec9ba4;border-radius:24px;padding:18px;background:#fffdf9}.month-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}.badge{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#fff0f2;border:1px solid var(--borda);font-size:22px}
-.month h3{margin:0;color:var(--verde);font:700 20px Georgia,serif}.month p{margin:4px 0 0;font:16px Georgia,serif}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.timebox{text-align:center;padding:16px 5px;border:1px solid var(--borda);border-radius:18px;background:linear-gradient(#fffafa,#fff0f3)}
-.number{display:block;color:var(--verde);font:bold 30px Georgia,serif}.unit{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
-.info{display:grid;grid-template-columns:1fr 1fr;gap:15px}.panel{border:1.5px dashed #ec9ba4;border-radius:24px;padding:17px;background:#fffdf9}.row{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed #efc8cc}.row:last-child{border:0}.icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#fff0f2;border:1px solid var(--borda);font-size:21px}.label{display:block;color:var(--verde);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.value{font:19px/1.35 Georgia,serif}
-.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:18px}.btn{min-height:54px;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border:0;border-radius:16px;color:#fff;text-decoration:none;font-weight:700;cursor:pointer}.maps{background:linear-gradient(#8e9943,#66732f)}.calendar{background:linear-gradient(#e37c85,#c85c67)}.share{background:linear-gradient(#bd8b58,#996b3e)}
-.final{text-align:center}.final img{width:160px}.final strong{display:block;color:var(--rosa);font:italic 500 30px Georgia,serif;margin-top:5px}
-.lightbox{position:fixed;inset:0;z-index:200;background:#000d;display:none;align-items:center;justify-content:center;padding:18px}.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:90vh;border-radius:16px}.close{position:absolute;right:18px;top:14px;color:#fff;font-size:34px;background:none;border:0;cursor:pointer}
-.floating{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:30}.floating span{position:absolute;top:-35px;opacity:.55;animation:fall linear infinite}.floating span:nth-child(1){left:6%;animation-duration:11s}.floating span:nth-child(2){left:25%;animation-duration:13s;animation-delay:-5s}.floating span:nth-child(3){left:48%;animation-duration:10s;animation-delay:-3s}.floating span:nth-child(4){left:71%;animation-duration:14s;animation-delay:-7s}.floating span:nth-child(5){left:92%;animation-duration:12s;animation-delay:-4s}
-@keyframes fall{to{transform:translateY(110vh) rotate(300deg)}}@keyframes float{50%{transform:translateY(-7px)}}
-@media(max-width:650px){.section{padding:23px 13px}.gallery.three{grid-template-columns:1fr 1fr}.info{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.countdown{gap:4px}.number{font-size:22px}.unit{font-size:9px}.value{font-size:18px}}
-@media(max-width:420px){.gallery,.gallery.three{grid-template-columns:1fr}.photo.wide{grid-column:auto}.photo.wide img{aspect-ratio:4/5}}
-</style>
+<link rel="icon" href="images/brasao.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body class="no-scroll">
-<div class="intro" id="intro"><div class="intro-card">
-<img src="assets/brasao.png" alt="Brasão Jardim dos Morangos">
-<div class="small">Você recebeu um convite especial</div><h1>Jardim dos Morangos</h1>
-<p>Entre e conheça um pouco da história da nossa colheita mais doce.</p>
-<button class="enter" id="enter">🍓 Abrir o convite</button></div></div>
 
-<div class="floating" aria-hidden="true"><span>🍓</span><span>🌸</span><span>♥</span><span>🌼</span><span>🍓</span></div>
-
-<section class="hero"><div class="hero-card"><div class="gingham"></div><div class="hero-content">
-<img src="assets/brasao.png" alt="Brasão oficial"><div class="small">Seja bem-vindo</div>
-<h1>Presença confirmada!</h1>
-<p>Ficamos muito felizes em saber que você e sua família estarão conosco para celebrar
-<strong>o 1º aniversário da Maria Heloísa!</strong></p>
-<a class="scroll" href="#historia">Conhecer nossa história ↓</a>
-</div><div class="gingham"></div></div></section>
-
-<main class="site">
-<section class="section" id="historia">
-<div class="chapter-label">Capítulo 1</div><h2 class="title">A sementinha do nosso jardim</h2>
-<div class="divider"></div>
-<p class="story">Antes mesmo de vermos seu rostinho, você já transformava nossos dias. Cada espera, cada sonho e cada novo detalhe faziam crescer um amor impossível de explicar.</p>
-<div class="gallery">
-<div class="photo"><img src="assets/gestacao_praia.jpg" alt="Ensaio gestante na praia" loading="lazy"></div>
-<div class="photo"><img src="assets/gestacao_familia.jpg" alt="Família durante a gestação" loading="lazy"></div>
-<div class="photo wide"><img src="assets/gestacao_caminhada.jpg" alt="Família caminhando durante a gestação" loading="lazy"></div>
+<div class="intro" id="intro">
+  <div class="intro-card">
+    <img src="images/brasao.png" alt="Brasão Jardim dos Morangos">
+    <div class="eyebrow">Você recebeu um convite especial</div>
+    <h1>Jardim dos Morangos</h1>
+    <p>Entre e conheça um pouco da história da nossa colheita mais doce.</p>
+    <button class="primary-button" id="enter">🍓 Abrir o convite</button>
+  </div>
 </div>
-</section>
 
-<section class="section">
-<div class="chapter-label">Capítulo 2</div><h2 class="title">O dia em que a flor desabrochou</h2>
-<div class="divider"></div>
-<p class="story"><strong>13 de maio de 2026.</strong> Nesse dia, o nosso jardim ganhou uma nova flor. Maria Heloísa chegou cercada de amor, acolhimento e emoção.</p>
-<div class="gallery three">
-<div class="photo"><img src="assets/nascimento_1.jpg" alt="Momento do nascimento" loading="lazy"></div>
-<div class="photo"><img src="assets/nascimento_2.jpg" alt="Primeiro colo" loading="lazy"></div>
-<div class="photo"><img src="assets/nascimento_3.jpg" alt="Maria Heloísa recém-nascida no colo da mãe" loading="lazy"></div>
-<div class="photo"><img src="assets/nascimento_4.jpg" alt="Primeiros cuidados" loading="lazy"></div>
-<div class="photo"><img src="assets/nascimento_5.jpg" alt="Primeiro abraço" loading="lazy"></div>
+<div class="floating" aria-hidden="true">
+  <span>🍓</span><span>🌸</span><span>♥</span><span>🌼</span><span>🍓</span>
 </div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">Maria Heloísa</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#historia">História</a>
+      <a href="#mesversarios">Mesversários</a>
+      <a href="#festa">A festa</a>
+      <a href="#presentes">Presentes</a>
+      <a href="#album">Álbum</a>
+      <a href="#mensagens">Mensagens</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-card">
+    <div class="gingham"></div>
+    <div class="hero-content">
+      <img src="images/brasao.png" alt="Brasão oficial Jardim dos Morangos">
+      <div class="eyebrow">Seja bem-vindo</div>
+      <h1>Presença confirmada!</h1>
+      <p>
+        Ficamos muito felizes em saber que você e sua família estarão conosco para celebrar
+        <strong>o 1º aniversário da Maria Heloísa!</strong>
+      </p>
+      <a class="scroll-link" href="#historia">Conhecer nossa história ↓</a>
+    </div>
+    <div class="gingham"></div>
+  </div>
 </section>
 
-<section class="section">
-<div class="chapter-label">Capítulo 3</div><h2 class="title">Cada mês, um novo moranguinho</h2>
-<div class="divider"></div>
-<p class="subtitle">Uma coleção de pequenos momentos que continuará crescendo mês a mês.</p>
-<div class="timeline">
-<div class="month"><div class="month-head"><div class="badge">⚽</div><div><h3>1º mês — Copa da Lolô</h3><p>Nosso primeiro mesversário, cheio de torcida e amor.</p></div></div>
-<div class="gallery"><div class="photo wide"><img src="assets/mes1_copa.jpg" alt="Primeiro mesversário Copa da Lolô" loading="lazy"></div></div></div>
-<div class="month"><div class="month-head"><div class="badge">🌽</div><div><h3>2º mês — Arraiá da Lolô</h3><p>Uma pequena caipirinha para alegrar o nosso jardim.</p></div></div>
-<div class="gallery three">
-<div class="photo"><img src="assets/mes2_1.jpg" alt="Segundo mesversário Arraiá da Lolô" loading="lazy"></div>
-<div class="photo"><img src="assets/mes2_2.jpg" alt="Segundo mesversário Arraiá da Lolô" loading="lazy"></div>
-<div class="photo"><img src="assets/mes2_3.jpg" alt="Segundo mesversário Arraiá da Lolô" loading="lazy"></div>
-</div></div>
-</div>
+<main class="site-main">
+
+<section class="section-card" id="historia">
+  <div class="chapter">Capítulo 1</div>
+  <h2 class="section-title">A sementinha do nosso jardim</h2>
+  <div class="divider"></div>
+  <p class="story">Antes mesmo de vermos seu rostinho, você já transformava nossos dias. Cada espera, cada sonho e cada novo detalhe faziam crescer um amor impossível de explicar.</p>
+  <div class="gallery">
+    <div class="photo"><img src="images/gestacao_praia.jpg" alt="Ensaio gestante na praia" loading="lazy"></div>
+    <div class="photo"><img src="images/gestacao_familia.jpg" alt="Família durante a gestação" loading="lazy"></div>
+    <div class="photo wide"><img src="images/gestacao_caminhada.jpg" alt="Família caminhando durante a gestação" loading="lazy"></div>
+  </div>
 </section>
 
-<section class="section">
-<div class="chapter-label">Capítulo 4</div><h2 class="title">O grande dia está chegando</h2>
-<p class="subtitle">Estamos contando os dias para celebrar a nossa colheita mais doce.</p><div class="divider"></div>
-<div class="countdown">
-<div class="timebox"><span class="number" id="days">--</span><span class="unit">dias</span></div>
-<div class="timebox"><span class="number" id="hours">--</span><span class="unit">horas</span></div>
-<div class="timebox"><span class="number" id="minutes">--</span><span class="unit">minutos</span></div>
-<div class="timebox"><span class="number" id="seconds">--</span><span class="unit">segundos</span></div>
-</div>
+<section class="section-card">
+  <div class="chapter">Capítulo 2</div>
+  <h2 class="section-title">O dia em que a flor desabrochou</h2>
+  <div class="divider"></div>
+  <p class="story"><strong>10 de maio de 2026.</strong> Nesse dia, o nosso jardim ganhou uma nova flor. Maria Heloísa chegou cercada de amor, acolhimento e emoção.</p>
+  <div class="gallery three">
+    <div class="photo"><img src="images/nascimento_1.jpg" alt="Momento do nascimento" loading="lazy"></div>
+    <div class="photo"><img src="images/nascimento_2.jpg" alt="Primeiro colo" loading="lazy"></div>
+    <div class="photo"><img src="images/nascimento_3.jpg" alt="Maria Heloísa recém-nascida no colo da mãe" loading="lazy"></div>
+    <div class="photo"><img src="images/nascimento_4.jpg" alt="Primeiros cuidados" loading="lazy"></div>
+    <div class="photo"><img src="images/nascimento_5.jpg" alt="Primeiro abraço" loading="lazy"></div>
+  </div>
 </section>
 
-<section class="section">
-<h2 class="title">Informações da festa</h2><div class="divider"></div>
-<div class="info">
-<div class="panel"><div class="row"><div class="icon">📅</div><div><span class="label">Data</span><span class="value">15 de maio de 2027</span></div></div>
-<div class="row"><div class="icon">🕐</div><div><span class="label">Horário</span><span class="value">13h</span></div></div></div>
-<div class="panel"><div class="row"><div class="icon">🍓</div><div><span class="label">Tema</span><span class="value">Jardim dos Morangos</span></div></div>
-<div class="row"><div class="icon">📍</div><div><span class="label">Localização</span><span class="value">Abra o endereço completo pelo botão abaixo.</span></div></div></div>
-</div>
-<div class="actions"><a class="btn maps" href="https://maps.app.goo.gl/Jm96BGBUCrWQhPKY7" target="_blank">📍 Google Maps</a>
-<a class="btn calendar" href="aniversario-maria-heloisa.ics" download>📅 Adicionar ao calendário</a>
-<button class="btn share" id="share">💌 Compartilhar</button></div>
+<section class="section-card" id="mesversarios">
+  <div class="chapter">Capítulo 3</div>
+  <h2 class="section-title">Cada mês, um novo moranguinho</h2>
+  <div class="divider"></div>
+  <p class="subtitle">Uma coleção de pequenos momentos que continuará crescendo mês a mês.</p>
+
+  <div class="timeline">
+    <div class="month">
+      <div class="month-head">
+        <div class="badge">⚽</div>
+        <div><h3>1º mês — Copa da Lolô</h3><p>Nosso primeiro mesversário, cheio de torcida e amor.</p></div>
+      </div>
+      <div class="gallery"><div class="photo wide"><img src="images/mes1_copa.jpg" alt="Primeiro mesversário Copa da Lolô" loading="lazy"></div></div>
+    </div>
+
+    <div class="month">
+      <div class="month-head">
+        <div class="badge">🌽</div>
+        <div><h3>2º mês — Arraiá da Lolô</h3><p>Uma pequena caipirinha para alegrar o nosso jardim.</p></div>
+      </div>
+      <div class="gallery three">
+        <div class="photo"><img src="images/mes2_1.jpg" alt="Segundo mesversário Arraiá da Lolô" loading="lazy"></div>
+        <div class="photo"><img src="images/mes2_2.jpg" alt="Segundo mesversário Arraiá da Lolô" loading="lazy"></div>
+        <div class="photo"><img src="images/mes2_3.jpg" alt="Segundo mesversário Arraiá da Lolô" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section final">
-<img src="assets/brasao.png" alt=""><p class="story">O primeiro ano da Maria Heloísa tem sido uma colheita de amor, descobertas e momentos inesquecíveis.</p>
-<strong>A colheita mais doce foi você.</strong>
+<section class="section-card" id="festa">
+  <div class="chapter">Capítulo 4</div>
+  <h2 class="section-title">O grande dia está chegando</h2>
+  <p class="subtitle">Estamos contando os dias para celebrar a nossa colheita mais doce.</p>
+  <div class="divider"></div>
+
+  <div class="countdown">
+    <div class="timebox"><span class="number" id="days">--</span><span class="unit">dias</span></div>
+    <div class="timebox"><span class="number" id="hours">--</span><span class="unit">horas</span></div>
+    <div class="timebox"><span class="number" id="minutes">--</span><span class="unit">minutos</span></div>
+    <div class="timebox"><span class="number" id="seconds">--</span><span class="unit">segundos</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="info-grid">
+    <div class="panel">
+      <div class="row"><div class="icon">📅</div><div><span class="label">Data</span><span class="value">15 de maio de 2027</span></div></div>
+      <div class="row"><div class="icon">🕐</div><div><span class="label">Horário</span><span class="value">13h</span></div></div>
+    </div>
+    <div class="panel">
+      <div class="row"><div class="icon">🍓</div><div><span class="label">Tema</span><span class="value">Jardim dos Morangos</span></div></div>
+      <div class="row"><div class="icon">📍</div><div><span class="label">Localização</span><span class="value">Abra o endereço pelo botão abaixo.</span></div></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a class="button maps" href="https://maps.app.goo.gl/Jm96BGBUCrWQhPKY7" target="_blank" rel="noopener">📍 Google Maps</a>
+    <a class="button calendar" href="aniversario-maria-heloisa.ics" download>📅 Adicionar ao calendário</a>
+    <button class="button share" id="shareButton">💌 Compartilhar</button>
+  </div>
 </section>
+
+<section class="section-card" id="presentes">
+  <div class="chapter">Sugestões</div>
+  <h2 class="section-title">Sugestões de Presentes</h2>
+  <div class="divider"></div>
+  <p class="subtitle">Selecionamos algumas sugestões para a Maria Heloísa, pensando na fase que ela estará vivendo ao completar seu primeiro aninho.</p>
+
+  <div class="gifts-list">
+    <div class="gift-group">
+      <button class="gift-toggle" type="button" aria-expanded="false"><span>🧸 Brinquedos Educativos</span><span class="gift-arrow">⌄</span></button>
+      <div class="gift-items"><ul><li>Blocos de montar</li><li>Brinquedos de encaixe</li><li>Cubo de atividades</li><li>Torre de empilhar</li><li>Brinquedos musicais</li></ul></div>
+    </div>
+    <div class="gift-group">
+      <button class="gift-toggle" type="button" aria-expanded="false"><span>📚 Livros Infantis</span><span class="gift-arrow">⌄</span></button>
+      <div class="gift-items"><ul><li>Livros interativos</li><li>Livros sonoros</li><li>Livros de pano</li><li>Livros de histórias</li></ul></div>
+    </div>
+    <div class="gift-group">
+      <button class="gift-toggle" type="button" aria-expanded="false"><span>👗 Vestuário</span><span class="gift-arrow">⌄</span></button>
+      <div class="gift-items"><ul><li>Roupas tamanho 2 anos</li><li>Roupas tamanho 3 anos</li><li>Pijamas</li><li>Calçados</li></ul></div>
+    </div>
+    <div class="gift-group">
+      <button class="gift-toggle" type="button" aria-expanded="false"><span>🚲 Brinquedos</span><span class="gift-arrow">⌄</span></button>
+      <div class="gift-items"><ul><li>Triciclo</li><li>Motoca</li><li>Barraca infantil</li><li>Piscina de bolinhas</li><li>Escorregador infantil</li><li>Bonecas</li><li>Pelúcias</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-card" id="album">
+  <div class="chapter">Álbum da Festa</div>
+  <h2 class="section-title">Registros do nosso Jardim</h2>
+  <div class="divider"></div>
+
+  <div class="album-box">
+    <div class="album-icon">📸</div>
+    <p class="story">No grande dia, familiares e amigos poderão escanear o QR Code disponível na festa e enviar as fotos que registrarem.</p>
+    <div class="future-grid">
+      <div class="future-card"><strong>Durante a festa</strong>O QR Code abrirá a área de envio de fotos diretamente no celular.</div>
+      <div class="future-card"><strong>Depois da festa</strong>As imagens aprovadas serão reunidas em uma galeria para todos reviverem esse dia.</div>
+    </div>
+    <span class="status-pill">Envio de fotos será ativado próximo à festa</span>
+  </div>
+</section>
+
+<section class="section-card" id="mensagens">
+  <div class="chapter">Jardim das Mensagens</div>
+  <h2 class="section-title">Um carinho para o futuro</h2>
+  <div class="divider"></div>
+
+  <div class="message-box">
+    <div class="album-icon">💌</div>
+    <p class="story">Os convidados poderão deixar mensagens especiais para a Maria Heloísa. Esses recados ficarão guardados como uma lembrança desse primeiro aniversário.</p>
+    <span class="status-pill">Mural será ativado junto com o álbum da festa</span>
+  </div>
+</section>
+
+<section class="section-card final">
+  <img src="images/brasao.png" alt="">
+  <p class="story">O primeiro ano da Maria Heloísa tem sido uma colheita de amor, descobertas e momentos inesquecíveis.</p>
+  <strong>A colheita mais doce foi você.</strong>
+</section>
+
 </main>
 
-<div class="lightbox" id="lightbox"><button class="close" id="close">×</button><img id="lightboxImg" alt=""></div>
-<script>
-const intro=document.getElementById('intro');
-document.getElementById('enter').onclick=()=>{intro.classList.add('hidden');document.body.classList.remove('no-scroll');setTimeout(()=>intro.remove(),700)};
-const target=new Date('2027-05-15T13:00:00-03:00').getTime();
-function tick(){const x=target-Date.now();if(x<=0)return;days.textContent=Math.floor(x/86400000);hours.textContent=Math.floor(x%86400000/3600000);minutes.textContent=Math.floor(x%3600000/60000);seconds.textContent=Math.floor(x%60000/1000)}tick();setInterval(tick,1000);
-document.getElementById('share').onclick=async()=>{const data={title:'1º aniversário da Maria Heloísa',text:'Jardim dos Morangos da Maria Heloísa',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{await navigator.clipboard.writeText(location.href);alert('Link copiado!')}};
-const box=document.getElementById('lightbox'), big=document.getElementById('lightboxImg');
-document.querySelectorAll('.photo img').forEach(img=>img.onclick=()=>{big.src=img.src;big.alt=img.alt;box.classList.add('open')});
-document.getElementById('close').onclick=()=>box.classList.remove('open');box.onclick=e=>{if(e.target===box)box.classList.remove('open')};
-</script>
+<div class="lightbox" id="lightbox">
+  <button class="close-lightbox" id="closeLightbox">×</button>
+  <img id="lightboxImg" alt="">
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
