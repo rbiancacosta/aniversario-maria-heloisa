@@ -1,14 +1,21 @@
-JARDIM DOS MORANGOS — V4 CORRIGIDA
+JARDIM DOS MORANGOS — VERSÃO 5.1 CORRIGIDA
 
+O site agora abre normalmente pelo endereço principal.
+
+COMO PUBLICAR:
 1. Extraia este ZIP.
 2. Envie TODOS os arquivos para a raiz do repositório no GitHub.
-3. Confirme o upload e aguarde o GitHub Pages publicar.
-4. No Google Forms, coloque na mensagem final este endereço:
+3. Substitua os arquivos com o mesmo nome.
+4. Aguarde a implantação ficar verde.
+5. Abra o site em uma janela anônima.
 
-https://rbiancacosta.github.io/aniversario-maria-heloisa/?confirmado=sim
+LINK DO SITE:
+https://rbiancacosta.github.io/aniversario-maria-heloisa/
 
-IMPORTANTE:
-- O endereço normal sem ?confirmado=sim não abre o conteúdo do site.
-- Os vídeos estão compactados e completos.
-- Não altere os nomes dos arquivos.
-- Depois de publicar, pressione Ctrl + F5 no computador.
+No final do Google Forms, use este mesmo link.
+
+CORREÇÃO:
+- removida a tela de acesso reservado;
+- confirmação continua sendo feita pelo Google Forms;
+- após enviar o Forms, o convidado entra normalmente no site;
+- cache atualizado para a versão 5.1.
