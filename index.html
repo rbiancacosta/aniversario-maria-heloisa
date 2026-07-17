@@ -89,18 +89,76 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
  .music-control{right:10px;bottom:12px;padding:10px 13px;font-size:13px}
 }
 
+
+/* Versão final: progresso, lightbox e navegação */
+.reading-progress{
+ position:fixed;top:0;left:0;height:4px;width:0;z-index:500;
+ background:linear-gradient(90deg,var(--rosa),#f1a4ad,var(--verde));
+ box-shadow:0 1px 6px rgba(216,104,117,.35);
+ transition:width .08s linear
+}
+.back-top{
+ position:fixed;left:16px;bottom:18px;z-index:160;
+ width:45px;height:45px;border-radius:50%;border:1px solid var(--borda);
+ background:rgba(255,255,255,.94);color:var(--verde);
+ box-shadow:var(--sombra);display:none;place-items:center;
+ font-size:22px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px)
+}
+.back-top.visible{display:grid}
+.photo img{cursor:zoom-in;transition:transform .35s ease,filter .35s ease}
+.photo:hover img{transform:scale(1.025);filter:saturate(1.03)}
+.lightbox{
+ position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;
+ background:rgba(35,24,23,.94);padding:18px
+}
+.lightbox.open{display:flex}
+.lightbox img{
+ max-width:min(94vw,1200px);max-height:88vh;object-fit:contain;
+ border-radius:14px;box-shadow:0 22px 70px rgba(0,0,0,.5)
+}
+.lightbox-close,.lightbox-prev,.lightbox-next{
+ position:absolute;border:0;background:rgba(255,255,255,.94);
+ color:var(--rosa2);width:46px;height:46px;border-radius:50%;
+ font-size:24px;cursor:pointer;display:grid;place-items:center
+}
+.lightbox-close{right:16px;top:16px}
+.lightbox-prev{left:14px;top:50%;transform:translateY(-50%)}
+.lightbox-next{right:14px;top:50%;transform:translateY(-50%)}
+.lightbox-counter{
+ position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+ color:white;background:rgba(0,0,0,.35);padding:7px 12px;border-radius:999px;
+ font-size:13px
+}
+.card{transition:transform .35s ease,box-shadow .35s ease}
+.card.visible{box-shadow:0 20px 58px rgba(80,55,48,.16)}
+.intro-card{animation:introFloat 3.8s ease-in-out infinite}
+@keyframes introFloat{50%{transform:translateY(-5px)}}
+@media(max-width:650px){
+ .back-top{left:10px;bottom:12px;width:42px;height:42px}
+ .lightbox{padding:8px}
+ .lightbox-prev,.lightbox-next{width:40px;height:40px;font-size:20px}
+ .lightbox-prev{left:6px}.lightbox-next{right:6px}
+}
+@media(prefers-reduced-motion:reduce){
+ *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+
 </style>
 </head>
 <body class="lock">
+
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
 
 
 
 <div class="intro" id="intro">
   <div class="intro-card">
-    <img src="brasao.png?v=6.0" alt="Brasão">
-    <div class="eyebrow">Bem-vindo</div>
+    <img src="brasao.png?v=6.1" alt="Brasão">
+    <div class="eyebrow">Edição Especial</div>
     <h1>Jardim dos Morangos</h1>
-    <p>Cada página guarda um pedacinho da história da Maria Heloísa.</p>
+    <p><em>Toda grande história começa com um pequeno milagre...</em></p>
+    <p>Esta é a história da nossa Maria Heloísa.</p>
     <button class="primary" id="enter">🍓 Entrar no Jardim</button>
   </div>
 </div>
@@ -119,7 +177,7 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 </div></div></nav>
 
 <section class="hero" id="inicio"><div class="hero-card"><div class="gingham"></div><div class="hero-content">
-<img src="brasao.png?v=6.0" alt="Brasão oficial"><div class="eyebrow">Seja bem-vindo</div>
+<img src="brasao.png?v=6.1" alt="Brasão oficial"><div class="eyebrow">Seja bem-vindo</div>
 <h1>Presença confirmada!</h1>
 <p>Ficamos muito felizes em saber que você e sua família estarão conosco para celebrar
 <strong>o 1º aniversário da Maria Heloísa!</strong></p>
@@ -131,8 +189,8 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 1</div><h2>Descobrindo Você</h2><div class="divider"></div>
 <p class="story">Foi quando soubemos que você existia que nossas vidas começaram a mudar. Um pequeno coração já fazia nascer em nós um amor imenso.</p>
 <div class="gallery">
-<div class="photo"><img src="descobrindo_voce_01_v52.jpg" alt="Primeiro registro"></div>
-<div class="photo"><img src="descobrindo_voce_02_v52.jpg" alt="Maria Heloísa ainda na barriga"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="descobrindo_voce_01_v52.jpg" alt="Primeiro registro"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="descobrindo_voce_02_v52.jpg" alt="Maria Heloísa ainda na barriga"></div>
 </div>
 </section>
 
@@ -142,9 +200,9 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="video-wrap"><video class="site-video" src="revelacao_v52.mp4" muted playsinline controls preload="metadata"></video><div style="text-align:center;padding:8px;background:#fff;color:#6f7b39;font-weight:700">Toque no botão ▶ para assistir</div><button class="sound">🔊 Ativar som</button></div>
 <div class="divider"></div>
 <div class="gallery three">
-<div class="photo"><img src="revelacao_1.jpg?v=6.0"></div><div class="photo"><img src="revelacao_2.jpg?v=6.0"></div>
-<div class="photo"><img src="revelacao_3.jpg?v=6.0"></div><div class="photo"><img src="revelacao_4.jpg?v=6.0"></div>
-<div class="photo"><img src="revelacao_5.jpg?v=6.0"></div><div class="photo"><img src="revelacao_extra.jpg?v=6.0"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="revelacao_1.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="revelacao_2.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="revelacao_3.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="revelacao_4.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="revelacao_5.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="revelacao_extra.jpg?v=6.1"></div>
 </div>
 </section>
 
@@ -152,8 +210,8 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 3</div><h2>A doce espera</h2><div class="divider"></div>
 <p class="story">Enquanto esperávamos por você, já descobríamos um amor que não cabia em nós.</p>
 <div class="gallery">
-<div class="photo"><img src="gestacao_henrique.jpg?v=6.0"></div><div class="photo"><img src="gestacao_praia.jpg?v=6.0"></div>
-<div class="photo wide"><img src="gestacao_familia.jpg?v=6.0"></div><div class="photo wide"><img src="gestacao_caminhada.jpg?v=6.0"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="gestacao_henrique.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="gestacao_praia.jpg?v=6.1"></div>
+<div class="photo wide"><img loading="lazy" decoding="async" src="gestacao_familia.jpg?v=6.1"></div><div class="photo wide"><img loading="lazy" decoding="async" src="gestacao_caminhada.jpg?v=6.1"></div>
 </div>
 </section>
 
@@ -161,9 +219,9 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 4</div><h2>Um chá cheio de amor</h2><div class="divider"></div>
 <p class="story">Antes mesmo da sua chegada, tantas pessoas já celebravam a sua vida.</p>
 <div class="gallery three">
-<div class="photo"><img src="cha_1.jpg?v=6.0"></div><div class="photo"><img src="cha_2.jpg?v=6.0"></div>
-<div class="photo"><img src="cha_3.jpg?v=6.0"></div><div class="photo"><img src="cha_4.jpg?v=6.0"></div>
-<div class="photo"><img src="cha_5.jpg?v=6.0"></div><div class="photo"><img src="cha_extra.jpg?v=6.0"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="cha_1.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="cha_2.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="cha_3.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="cha_4.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="cha_5.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="cha_extra.jpg?v=6.1"></div>
 </div>
 </section>
 
@@ -177,25 +235,25 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 6</div><h2>O dia em que nosso jardim floresceu</h2><div class="divider"></div>
 <p class="story">Foram horas de coragem, acolhimento e amor. Cada momento nos aproximava do encontro mais esperado.</p>
 <div class="gallery three">
-<div class="photo"><img src="parto_1.jpg?v=6.0"></div><div class="photo"><img src="parto_2.jpg?v=6.0"></div>
-<div class="photo"><img src="parto_3.jpg?v=6.0"></div><div class="photo"><img src="parto_4.jpg?v=6.0"></div>
-<div class="photo"><img src="parto_extra.jpg?v=6.0"></div><div class="photo"><img src="parto_5.jpg?v=6.0"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="parto_1.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="parto_2.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="parto_3.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="parto_4.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="parto_extra.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="parto_5.jpg?v=6.1"></div>
 </div>
 <div class="divider"></div><h2>Bem-vinda ao mundo</h2>
 <p class="story"><strong>10 de maio de 2026.</strong> Maria Heloísa chegou aos nossos braços e transformou para sempre a nossa história.</p>
 <div class="gallery three">
-<div class="photo"><img src="nascimento_1.jpg?v=6.0"></div><div class="photo"><img src="nascimento_2.jpg?v=6.0"></div>
-<div class="photo"><img src="nascimento_extra.jpg?v=6.0"></div><div class="photo"><img src="nascimento_4.jpg?v=6.0"></div>
-<div class="photo"><img src="nascimento_5.jpg?v=6.0"></div><div class="photo"><img src="nascimento_6.jpg?v=6.0"></div>
-<div class="photo"><img src="nascimento_7.jpg?v=6.0"></div><div class="photo"><img src="nascimento_8.jpg?v=6.0"></div>
-<div class="photo"><img src="hospital_1.jpg?v=6.0"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="nascimento_1.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="nascimento_2.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="nascimento_extra.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="nascimento_4.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="nascimento_5.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="nascimento_6.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="nascimento_7.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="nascimento_8.jpg?v=6.1"></div>
+<div class="photo"><img loading="lazy" decoding="async" src="hospital_1.jpg?v=6.1"></div>
 </div>
 </section>
 
 <section class="card reveal" id="meses">
 <div class="chapter">Capítulo 7</div><h2>Cada mês, um novo moranguinho</h2><div class="divider"></div>
-<h3>⚽ 1º mês — Copa da Lolô</h3><div class="gallery"><div class="photo wide face-focus"><img src="mes1.jpg?v=6.0"></div></div>
-<h3>🌽 2º mês — Arraiá da Lolô</h3><div class="gallery"><div class="photo"><img src="mes2_2.jpg?v=6.0"></div><div class="photo"><img src="mes2_3.jpg?v=6.0"></div></div>
+<h3>⚽ 1º mês — Copa da Lolô</h3><div class="gallery"><div class="photo wide face-focus"><img loading="lazy" decoding="async" src="mes1.jpg?v=6.1"></div></div>
+<h3>🌽 2º mês — Arraiá da Lolô</h3><div class="gallery"><div class="photo"><img loading="lazy" decoding="async" src="mes2_2.jpg?v=6.1"></div><div class="photo"><img loading="lazy" decoding="async" src="mes2_3.jpg?v=6.1"></div></div>
 </section>
 
 <section class="card reveal" id="festa">
@@ -235,11 +293,22 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <section class="card reveal"><div class="chapter">Álbum da Festa</div><h2>Registros do nosso Jardim</h2><div class="divider"></div>
 <div class="feature"><p class="story">Próximo à festa, será ativado o QR Code para os convidados enviarem fotos diretamente do celular.</p></div></section>
 
-<section class="card final reveal"><img src="brasao.png?v=6.0"><p class="story">Obrigada por fazer parte do primeiro capítulo da minha história.</p>
+<section class="card final reveal"><img src="brasao.png?v=6.1"><p class="story">Obrigada por fazer parte do primeiro capítulo da minha história.</p>
 <strong>A colheita mais doce foi você.</strong></section>
 </main>
 
 
+
+
+<button class="back-top" id="backTop" type="button" aria-label="Voltar ao topo">↑</button>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Fechar">×</button>
+  <button class="lightbox-prev" id="lightboxPrev" type="button" aria-label="Foto anterior">‹</button>
+  <img id="lightboxImage" alt="Foto ampliada">
+  <button class="lightbox-next" id="lightboxNext" type="button" aria-label="Próxima foto">›</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
 <audio id="backgroundMusic" preload="auto" loop>
   <source src="musica_maria_heloisa.mp3" type="audio/mpeg">
@@ -256,6 +325,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuButton = document.getElementById('menu');
   const links = document.getElementById('links');
   const shareButton = document.getElementById('share');
+  const readingProgress = document.getElementById('readingProgress');
+  const backTop = document.getElementById('backTop');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
   const backgroundMusic = document.getElementById('backgroundMusic');
   const musicControl = document.getElementById('musicControl');
   const musicLabel = document.getElementById('musicLabel');
@@ -395,6 +472,87 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+
+  // Barra de progresso e botão voltar ao topo
+  function updatePageProgress() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    if (readingProgress) readingProgress.style.width = Math.min(100, Math.max(0, progress)) + '%';
+    if (backTop) backTop.classList.toggle('visible', window.scrollY > 700);
+  }
+  window.addEventListener('scroll', updatePageProgress, { passive: true });
+  window.addEventListener('resize', updatePageProgress);
+  updatePageProgress();
+
+  if (backTop) {
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // Galeria em tela cheia
+  const galleryImages = Array.from(document.querySelectorAll('.photo img'));
+  let currentImageIndex = 0;
+
+  function showLightbox(index) {
+    if (!lightbox || !lightboxImage || galleryImages.length === 0) return;
+    currentImageIndex = (index + galleryImages.length) % galleryImages.length;
+    const source = galleryImages[currentImageIndex];
+    lightboxImage.src = source.currentSrc || source.src;
+    lightboxImage.alt = source.alt || 'Foto da história da Maria Heloísa';
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${currentImageIndex + 1} de ${galleryImages.length}`;
+    }
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lightboxImage) lightboxImage.removeAttribute('src');
+  }
+
+  galleryImages.forEach((image, index) => {
+    image.setAttribute('tabindex', '0');
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', 'Ampliar foto');
+    image.addEventListener('click', () => showLightbox(index));
+    image.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        showLightbox(index);
+      }
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', () => showLightbox(currentImageIndex - 1));
+  if (lightboxNext) lightboxNext.addEventListener('click', () => showLightbox(currentImageIndex + 1));
+  if (lightbox) {
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', event => {
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', event => {
+      const difference = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(difference) > 55) {
+        showLightbox(currentImageIndex + (difference < 0 ? 1 : -1));
+      }
+    }, { passive: true });
+  }
+
+  document.addEventListener('keydown', event => {
+    if (!lightbox || !lightbox.classList.contains('open')) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') showLightbox(currentImageIndex - 1);
+    if (event.key === 'ArrowRight') showLightbox(currentImageIndex + 1);
+  });
+
 
   if (shareButton) {
     shareButton.addEventListener('click', async () => {
