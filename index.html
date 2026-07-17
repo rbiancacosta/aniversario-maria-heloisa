@@ -72,6 +72,23 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 @media(max-width:780px){.menu{display:block}.links{position:absolute;top:67px;left:12px;right:12px;display:none;flex-direction:column;background:#fff;border:1px solid var(--borda);border-radius:16px;padding:10px;box-shadow:var(--sombra)}.links.open{display:flex}.links a{padding:11px}}
 @media(max-width:650px){.card{padding:23px 13px}.gallery.three{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr}.palette{grid-template-columns:repeat(2,1fr)}.number{font-size:22px}}
 @media(max-width:420px){.gallery,.gallery.three{grid-template-columns:1fr}.wide{grid-column:auto}.wide img{aspect-ratio:4/5}}
+
+.music-control{
+ position:fixed;right:16px;bottom:18px;z-index:160;
+ display:none;align-items:center;gap:8px;
+ border:1px solid var(--borda);border-radius:999px;
+ padding:11px 15px;background:rgba(255,255,255,.94);
+ color:var(--rosa2);font-weight:700;box-shadow:var(--sombra);
+ cursor:pointer;backdrop-filter:blur(8px)
+}
+.music-control.visible{display:flex}
+.music-control .pulse{width:10px;height:10px;border-radius:50%;background:var(--rosa)}
+.music-control.playing .pulse{animation:musicPulse 1.2s ease-in-out infinite}
+@keyframes musicPulse{50%{transform:scale(1.65);opacity:.45}}
+@media(max-width:650px){
+ .music-control{right:10px;bottom:12px;padding:10px 13px;font-size:13px}
+}
+
 </style>
 </head>
 <body class="lock">
@@ -80,7 +97,7 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 
 <div class="intro" id="intro">
   <div class="intro-card">
-    <img src="brasao.png?v=5.4" alt="Brasão">
+    <img src="brasao.png?v=6.0" alt="Brasão">
     <div class="eyebrow">Bem-vindo</div>
     <h1>Jardim dos Morangos</h1>
     <p>Cada página guarda um pedacinho da história da Maria Heloísa.</p>
@@ -102,7 +119,7 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 </div></div></nav>
 
 <section class="hero" id="inicio"><div class="hero-card"><div class="gingham"></div><div class="hero-content">
-<img src="brasao.png?v=5.4" alt="Brasão oficial"><div class="eyebrow">Seja bem-vindo</div>
+<img src="brasao.png?v=6.0" alt="Brasão oficial"><div class="eyebrow">Seja bem-vindo</div>
 <h1>Presença confirmada!</h1>
 <p>Ficamos muito felizes em saber que você e sua família estarão conosco para celebrar
 <strong>o 1º aniversário da Maria Heloísa!</strong></p>
@@ -125,9 +142,9 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="video-wrap"><video class="site-video" src="revelacao_v52.mp4" muted playsinline controls preload="metadata"></video><div style="text-align:center;padding:8px;background:#fff;color:#6f7b39;font-weight:700">Toque no botão ▶ para assistir</div><button class="sound">🔊 Ativar som</button></div>
 <div class="divider"></div>
 <div class="gallery three">
-<div class="photo"><img src="revelacao_1.jpg?v=5.4"></div><div class="photo"><img src="revelacao_2.jpg?v=5.4"></div>
-<div class="photo"><img src="revelacao_3.jpg?v=5.4"></div><div class="photo"><img src="revelacao_4.jpg?v=5.4"></div>
-<div class="photo"><img src="revelacao_5.jpg?v=5.4"></div><div class="photo"><img src="revelacao_extra.jpg?v=5.4"></div>
+<div class="photo"><img src="revelacao_1.jpg?v=6.0"></div><div class="photo"><img src="revelacao_2.jpg?v=6.0"></div>
+<div class="photo"><img src="revelacao_3.jpg?v=6.0"></div><div class="photo"><img src="revelacao_4.jpg?v=6.0"></div>
+<div class="photo"><img src="revelacao_5.jpg?v=6.0"></div><div class="photo"><img src="revelacao_extra.jpg?v=6.0"></div>
 </div>
 </section>
 
@@ -135,8 +152,8 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 3</div><h2>A doce espera</h2><div class="divider"></div>
 <p class="story">Enquanto esperávamos por você, já descobríamos um amor que não cabia em nós.</p>
 <div class="gallery">
-<div class="photo"><img src="gestacao_henrique.jpg?v=5.4"></div><div class="photo"><img src="gestacao_praia.jpg?v=5.4"></div>
-<div class="photo wide"><img src="gestacao_familia.jpg?v=5.4"></div><div class="photo wide"><img src="gestacao_caminhada.jpg?v=5.4"></div>
+<div class="photo"><img src="gestacao_henrique.jpg?v=6.0"></div><div class="photo"><img src="gestacao_praia.jpg?v=6.0"></div>
+<div class="photo wide"><img src="gestacao_familia.jpg?v=6.0"></div><div class="photo wide"><img src="gestacao_caminhada.jpg?v=6.0"></div>
 </div>
 </section>
 
@@ -144,9 +161,9 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 4</div><h2>Um chá cheio de amor</h2><div class="divider"></div>
 <p class="story">Antes mesmo da sua chegada, tantas pessoas já celebravam a sua vida.</p>
 <div class="gallery three">
-<div class="photo"><img src="cha_1.jpg?v=5.4"></div><div class="photo"><img src="cha_2.jpg?v=5.4"></div>
-<div class="photo"><img src="cha_3.jpg?v=5.4"></div><div class="photo"><img src="cha_4.jpg?v=5.4"></div>
-<div class="photo"><img src="cha_5.jpg?v=5.4"></div><div class="photo"><img src="cha_extra.jpg?v=5.4"></div>
+<div class="photo"><img src="cha_1.jpg?v=6.0"></div><div class="photo"><img src="cha_2.jpg?v=6.0"></div>
+<div class="photo"><img src="cha_3.jpg?v=6.0"></div><div class="photo"><img src="cha_4.jpg?v=6.0"></div>
+<div class="photo"><img src="cha_5.jpg?v=6.0"></div><div class="photo"><img src="cha_extra.jpg?v=6.0"></div>
 </div>
 </section>
 
@@ -160,25 +177,25 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="chapter">Capítulo 6</div><h2>O dia em que nosso jardim floresceu</h2><div class="divider"></div>
 <p class="story">Foram horas de coragem, acolhimento e amor. Cada momento nos aproximava do encontro mais esperado.</p>
 <div class="gallery three">
-<div class="photo"><img src="parto_1.jpg?v=5.4"></div><div class="photo"><img src="parto_2.jpg?v=5.4"></div>
-<div class="photo"><img src="parto_3.jpg?v=5.4"></div><div class="photo"><img src="parto_4.jpg?v=5.4"></div>
-<div class="photo"><img src="parto_extra.jpg?v=5.4"></div><div class="photo"><img src="parto_5.jpg?v=5.4"></div>
+<div class="photo"><img src="parto_1.jpg?v=6.0"></div><div class="photo"><img src="parto_2.jpg?v=6.0"></div>
+<div class="photo"><img src="parto_3.jpg?v=6.0"></div><div class="photo"><img src="parto_4.jpg?v=6.0"></div>
+<div class="photo"><img src="parto_extra.jpg?v=6.0"></div><div class="photo"><img src="parto_5.jpg?v=6.0"></div>
 </div>
 <div class="divider"></div><h2>Bem-vinda ao mundo</h2>
 <p class="story"><strong>10 de maio de 2026.</strong> Maria Heloísa chegou aos nossos braços e transformou para sempre a nossa história.</p>
 <div class="gallery three">
-<div class="photo"><img src="nascimento_1.jpg?v=5.4"></div><div class="photo"><img src="nascimento_2.jpg?v=5.4"></div>
-<div class="photo"><img src="nascimento_extra.jpg?v=5.4"></div><div class="photo"><img src="nascimento_4.jpg?v=5.4"></div>
-<div class="photo"><img src="nascimento_5.jpg?v=5.4"></div><div class="photo"><img src="nascimento_6.jpg?v=5.4"></div>
-<div class="photo"><img src="nascimento_7.jpg?v=5.4"></div><div class="photo"><img src="nascimento_8.jpg?v=5.4"></div>
-<div class="photo"><img src="hospital_1.jpg?v=5.4"></div>
+<div class="photo"><img src="nascimento_1.jpg?v=6.0"></div><div class="photo"><img src="nascimento_2.jpg?v=6.0"></div>
+<div class="photo"><img src="nascimento_extra.jpg?v=6.0"></div><div class="photo"><img src="nascimento_4.jpg?v=6.0"></div>
+<div class="photo"><img src="nascimento_5.jpg?v=6.0"></div><div class="photo"><img src="nascimento_6.jpg?v=6.0"></div>
+<div class="photo"><img src="nascimento_7.jpg?v=6.0"></div><div class="photo"><img src="nascimento_8.jpg?v=6.0"></div>
+<div class="photo"><img src="hospital_1.jpg?v=6.0"></div>
 </div>
 </section>
 
 <section class="card reveal" id="meses">
 <div class="chapter">Capítulo 7</div><h2>Cada mês, um novo moranguinho</h2><div class="divider"></div>
-<h3>⚽ 1º mês — Copa da Lolô</h3><div class="gallery"><div class="photo wide face-focus"><img src="mes1.jpg?v=5.4"></div></div>
-<h3>🌽 2º mês — Arraiá da Lolô</h3><div class="gallery"><div class="photo"><img src="mes2_2.jpg?v=5.4"></div><div class="photo"><img src="mes2_3.jpg?v=5.4"></div></div>
+<h3>⚽ 1º mês — Copa da Lolô</h3><div class="gallery"><div class="photo wide face-focus"><img src="mes1.jpg?v=6.0"></div></div>
+<h3>🌽 2º mês — Arraiá da Lolô</h3><div class="gallery"><div class="photo"><img src="mes2_2.jpg?v=6.0"></div><div class="photo"><img src="mes2_3.jpg?v=6.0"></div></div>
 </section>
 
 <section class="card reveal" id="festa">
@@ -187,7 +204,7 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <div class="timebox"><span class="number" id="days">--</span>dias</div><div class="timebox"><span class="number" id="hours">--</span>horas</div>
 <div class="timebox"><span class="number" id="minutes">--</span>minutos</div><div class="timebox"><span class="number" id="seconds">--</span>segundos</div>
 </div>
-<p class="story"><strong>15 de maio de 2027, às 13h.</strong></p>
+<p class="story"><strong>15 de maio de 2027, às 15h.</strong></p>
 <div class="actions"><a class="btn maps" href="https://maps.app.goo.gl/FYoNhPsc1UcgoJvs7" target="_blank">📍 Google Maps</a>
 <a class="btn calendar" href="aniversario-maria-heloisa.ics" download>📅 Calendário</a><button class="btn share" id="share">💌 Compartilhar</button></div>
 </section>
@@ -218,10 +235,19 @@ details{border:1px solid var(--borda);border-radius:18px;padding:15px 18px;margi
 <section class="card reveal"><div class="chapter">Álbum da Festa</div><h2>Registros do nosso Jardim</h2><div class="divider"></div>
 <div class="feature"><p class="story">Próximo à festa, será ativado o QR Code para os convidados enviarem fotos diretamente do celular.</p></div></section>
 
-<section class="card final reveal"><img src="brasao.png?v=5.4"><p class="story">Obrigada por fazer parte do primeiro capítulo da minha história.</p>
+<section class="card final reveal"><img src="brasao.png?v=6.0"><p class="story">Obrigada por fazer parte do primeiro capítulo da minha história.</p>
 <strong>A colheita mais doce foi você.</strong></section>
 </main>
 
+
+
+<audio id="backgroundMusic" preload="auto" loop>
+  <source src="musica_maria_heloisa.mp3" type="audio/mpeg">
+</audio>
+<button class="music-control" id="musicControl" type="button" aria-label="Ligar ou desligar música">
+  <span class="pulse"></span>
+  <span id="musicLabel">🔊 Música</span>
+</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -230,11 +256,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuButton = document.getElementById('menu');
   const links = document.getElementById('links');
   const shareButton = document.getElementById('share');
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  const musicControl = document.getElementById('musicControl');
+  const musicLabel = document.getElementById('musicLabel');
+  let musicStarted = false;
+
+  if (backgroundMusic) {
+    backgroundMusic.volume = 0.20;
+  }
 
   if (enterButton && intro) {
-    enterButton.addEventListener('click', () => {
+    enterButton.addEventListener('click', async () => {
       intro.classList.add('hidden');
       document.body.classList.remove('lock');
+      if (musicControl) musicControl.classList.add('visible');
+      if (backgroundMusic) {
+        try {
+          await backgroundMusic.play();
+          musicStarted = true;
+          if (musicControl) musicControl.classList.add('playing');
+          if (musicLabel) musicLabel.textContent = '🔊 Tocando';
+        } catch (_) {
+          if (musicLabel) musicLabel.textContent = '▶ Ouvir música';
+        }
+      }
     });
   }
 
@@ -249,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const hourEl = document.getElementById('hours');
   const minuteEl = document.getElementById('minutes');
   const secondEl = document.getElementById('seconds');
-  const target = new Date('2027-05-15T13:00:00-03:00').getTime();
+  const target = new Date('2027-05-15T15:00:00-03:00').getTime();
 
   function tick() {
     const remaining = target - Date.now();
@@ -301,6 +346,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   } else {
     sections.forEach(section => section.classList.add('visible'));
+  }
+
+
+  if (musicControl && backgroundMusic) {
+    musicControl.addEventListener('click', async () => {
+      if (backgroundMusic.paused) {
+        try {
+          await backgroundMusic.play();
+          musicStarted = true;
+          musicControl.classList.add('playing');
+          if (musicLabel) musicLabel.textContent = '🔊 Tocando';
+        } catch (_) {
+          if (musicLabel) musicLabel.textContent = '▶ Toque para ouvir';
+        }
+      } else {
+        backgroundMusic.pause();
+        musicControl.classList.remove('playing');
+        if (musicLabel) musicLabel.textContent = '🔇 Música pausada';
+      }
+    });
+
+    document.querySelectorAll('.site-video').forEach(video => {
+      video.addEventListener('play', () => {
+        if (!backgroundMusic.paused) {
+          backgroundMusic.pause();
+          musicControl.classList.remove('playing');
+          if (musicLabel) musicLabel.textContent = '🔇 Pausada para o vídeo';
+          video.dataset.resumeMusic = 'true';
+        }
+      });
+      video.addEventListener('pause', () => {
+        if (video.dataset.resumeMusic === 'true' && musicStarted) {
+          backgroundMusic.play().then(() => {
+            musicControl.classList.add('playing');
+            if (musicLabel) musicLabel.textContent = '🔊 Tocando';
+          }).catch(() => {});
+          video.dataset.resumeMusic = '';
+        }
+      });
+      video.addEventListener('ended', () => {
+        if (musicStarted) {
+          backgroundMusic.play().then(() => {
+            musicControl.classList.add('playing');
+            if (musicLabel) musicLabel.textContent = '🔊 Tocando';
+          }).catch(() => {});
+        }
+      });
+    });
   }
 
   if (shareButton) {
